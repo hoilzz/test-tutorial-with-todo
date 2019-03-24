@@ -1,17 +1,19 @@
+const isTest = String(process.env.NODE_ENV) === 'test';
+
 module.exports = {
   presets: [
     [
-      "@babel/env",
+      '@babel/env',
       {
-        modules: false,
-        useBuiltIns: "usage",
-        targets: "> 0.25%, not dead"
-      }
+        modules: isTest ? 'commonjs' : false,
+        useBuiltIns: 'usage',
+        targets: '> 0.25%, not dead',
+      },
     ],
-    "@babel/preset-react"
+    '@babel/preset-react',
   ],
   plugins: [
-    "@babel/plugin-syntax-dynamic-import",
-    "react-hot-loader/babel"
-  ]
+    '@babel/plugin-syntax-dynamic-import',
+    'react-hot-loader/babel',
+  ],
 };

@@ -8,7 +8,7 @@ const Calculator = () => {
 
   return (
     <div>
-      <div>Counter : {counter}</div>
+      <h1 data-testid="number-display">{counter}</h1>
       <div>
         <button type="button" onClick={onIncrement}>
           더하기

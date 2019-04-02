@@ -15,7 +15,9 @@ const NoPage = React.lazy(() =>
   import(/* webpackChunkName: "Nopage" */ './NoPage'),
 );
 
-const Calculator = React.lazy(() => import('./Calculator'));
+const CalculatorContainer = React.lazy(() =>
+  import('../containers/CalculatorContainer'),
+);
 
 const App = () => (
   <Router>
@@ -23,7 +25,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/async" component={AsyncPage} />
-        <Route path="/calculator" component={Calculator} />
+        <Route path="/calculator" component={CalculatorContainer} />
         <Route component={NoPage} />
       </Switch>
     </React.Suspense>

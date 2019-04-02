@@ -16,6 +16,11 @@ function setup(number = 0) {
     ...callbacks,
   };
 }
+
+// 얘 없이 테스트 돌리면, 2번째 테스트부터 테스트 fail
+// react-testing-library의 render 함수는 document.body에 append 되는 방식
+// 두번째 테스트의 setup에서 getByText는 첫번째 테스트의 button을 찾을 거고
+// 두번쨰 setup의 mock함수가 아닌 첫번째 setup의 mock함수가 호출됐으므로 test fail..
 afterEach(cleanup);
 
 describe('Calculator component', () => {
@@ -27,9 +32,11 @@ describe('Calculator component', () => {
 
     expect(onClickAsyncIncrement).toBeCalled();
   });
+
   test('first button should call onClickIncrement', () => {
     // arrange
     const { utils, onClickIncrement } = setup();
+
     const incrementBtn = utils.getByText('더하기');
 
     // act

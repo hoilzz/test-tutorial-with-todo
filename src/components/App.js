@@ -19,6 +19,10 @@ const CalculatorContainer = React.lazy(() =>
   import('../containers/CalculatorContainer'),
 );
 
+const CounterContainer = React.lazy(() =>
+  import('../containers/CounterContainer'),
+);
+
 const App = () => (
   <Router>
     <React.Suspense fallback={<div>loading...</div>}>
@@ -26,6 +30,7 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route path="/async" component={AsyncPage} />
         <Route path="/calculator" component={CalculatorContainer} />
+        <Route path="/counter" component={CounterContainer} />
         <Route component={NoPage} />
       </Switch>
     </React.Suspense>
